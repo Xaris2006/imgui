@@ -69,14 +69,6 @@ Index of this file:
 #include <stddef.h>                 // ptrdiff_t, NULL
 #include <string.h>                 // memset, memmove, memcpy, strlen, strchr, strcpy, strcmp
 
-// Version
-// (Integer encoded as XYYZZ for use in #if preprocessor conditionals. Work in progress versions typically starts at XYY99 then bounce up to XYY00, XYY01 etc. when release tagging happens)
-#define IMGUI_VERSION               "1.88"
-#define IMGUI_VERSION_NUM           18800
-#define IMGUI_CHECKVERSION()        ImGui::DebugCheckVersionAndDataLayout(IMGUI_VERSION, sizeof(ImGuiIO), sizeof(ImGuiStyle), sizeof(ImVec2), sizeof(ImVec4), sizeof(ImDrawVert), sizeof(ImDrawIdx))
-#define IMGUI_HAS_TABLE
-#define IMGUI_HAS_VIEWPORT          // Viewport WIP branch
-#define IMGUI_HAS_DOCK              // Docking WIP branch
 #define IMGUI_HAS_STACK_LAYOUT      1 // Stack-Layout PR #846
 
 // Define attributes of all API symbols declarations (e.g. for DLL under Windows)
@@ -233,7 +225,7 @@ typedef void* ImTextureID;          // Default: store a pointer or an integer fi
 // - To use 16-bit indices + allow large meshes: backend need to set 'io.BackendFlags |= ImGuiBackendFlags_RendererHasVtxOffset' and handle ImDrawCmd::VtxOffset (recommended).
 // - To use 32-bit indices: override with '#define ImDrawIdx unsigned int' in your imconfig.h file.
 #ifndef ImDrawIdx
-typedef unsigned short ImDrawIdx;   // Default: 16-bit (for maximum compatibility with renderer backends)
+typedef unsigned int ImDrawIdx;   // Default: 16-bit (for maximum compatibility with renderer backends)
 #endif
 
 // Scalar data types
